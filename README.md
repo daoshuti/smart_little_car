@@ -1,16 +1,16 @@
-### Smart Little Car
+# Smart Little Car
 
-#### 1. 介绍
-##### 主要功能：
+## 1. 介绍
+### 主要功能：
 通过手机连接wifi远程控制小车。
 
-##### [计划]后续增加功能：
+### [计划]后续增加功能：
 1. 网页远程视频监控(已实现)
 2. 网页远程控制
 3. 手机远程视频监控
 4. 语音模块
 
-##### 硬件列表：
+### 硬件列表：
 
 小车：
 
@@ -26,13 +26,28 @@
 
 Android系统手机一部
 
-##### 软件结构
+### 软件结构
 
 Android ---(socket)---> openwrt ---(uart)---> stm32 ---(TTL)---> motor
 
-1. Android "./android_car_scoket"
-2. openwrt "./openwrt_main"
-3. stm32 "./stm32_car"
+#### 0.总体框架
+![all](https://github.com/daoshuti/smart_little_car/blob/master/img/smart_car.jpg?raw=true)
 
-##### 图片
+#### 1. Android "./android_car_scoket"
+![app](https://github.com/daoshuti/smart_little_car/blob/master/img/app.jpg?raw=trues://github.com/daoshuti/smart_little_car/blob/master/img/app.jpg?raw=true)
+
+#### 2. openwrt "./openwrt_main"
+![main](https://github.com/daoshuti/smart_little_car/blob/master/img/main.jpg?raw=true)
+
+#### 3. stm32 "./stm32_car"
+![stm32](https://github.com/daoshuti/smart_little_car/blob/master/img/stm32.jpg?raw=true)
+
+#### 4. 上下位机协议
+![car_up](https://github.com/daoshuti/smart_little_car/blob/master/img/car_up.jpg?raw=trues://github.com/daoshuti/smart_little_car/blob/master/img/car_up.jpg?raw=true)
+![car_down](https://github.com/daoshuti/smart_little_car/blob/master/img/car_down.jpg?raw=trues://github.com/daoshuti/smart_little_car/blob/master/img/car_down.jpg?raw=true)
+
+### 小车实物图
+
+![car](https://github.com/daoshuti/smart_little_car/blob/master/img/car.jpg?raw=tru://github.com/daoshuti/smart_little_car/blob/master/img/car.jpg?raw=true)
+
 
