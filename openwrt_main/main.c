@@ -15,7 +15,7 @@
 #define 	MAX_EVENTS 	50
 
 int main(int argc,char *argv[])  
-{
+{/*{{{*/
 	int sockfd,confd;
 	int iResult = -1;     
 	int fd = -1,iCommPort,iBaudRate,iDataSize,iStopBit;
@@ -28,7 +28,7 @@ int main(int argc,char *argv[])
 	//******************************************************//
 	//*****************serial串口初始化*********************//
 	//******************************************************//
-	
+	/*{{{*/
 	//设置打开的串口为ttyUSB0
 	iCommPort = 1;  
 	//打开串口
@@ -52,11 +52,11 @@ int main(int argc,char *argv[])
 	}     
 	//打印串口设备，在本文程序中的文件描述符
 	printf("fd = %d \n",fd);
-
+	/*}}}*/
 	//******************************************************//
 	//*****************TCP服务器,epoll**********************//
 	//******************************************************//
-	
+	/*{{{*/
 	//创建一个socket
 	sockfd = socket(AF_INET,SOCK_STREAM,0);
 	if(socket < 0)
@@ -90,7 +90,7 @@ int main(int argc,char *argv[])
 	//通过文件描述符来操作epoll
 	epollfd = epoll_create(MAX_EVENTS);
 	//linux 旧版本需要填充足够大的数
-	//较劲内核 数值填充小了，在后期不影响监控范围
+	//较新的内核，数值填充小了，在后期不影响监控范围
 	if(epollfd < 0)
 	{
 		perror("fail to epoll");
@@ -105,7 +105,7 @@ int main(int argc,char *argv[])
 		perror("fail to add fd");
 		return -1;
 	}
-	
+
 	//epoll 优点1 添加一次，不需要重复添加
 	while(1)
 	{
@@ -185,38 +185,7 @@ int main(int argc,char *argv[])
 			}
 		}
 	}
-
-
-#if 0
-	//测试程序
-	char buf[BUF_SIZE];
-	char *ret_fgets;
-	while(1)
-	{
-		//将Buffer清零
-		memset(buf,'\0',sizeof(buf));
-		memset(recvbuf,'\0',sizeof(recvbuf));
-		memset(sendbuf,'\0',sizeof(sendbuf));
-		ret_fgets = fgets(buf,sizeof(buf),stdin);
-		if(ret_fgets != NULL)
-		{
-			sprintf(sendbuf,"%s\r\n",buf);
-			//向串口发送sendbuf
-			iLen = write_port(fd,sendbuf,strlen(sendbuf));
-			//读取得到的数据，并打印
-			iLen = read_port(fd,recvbuf,6);
-			if(iLen > 0)
-				if(recvbuf[4] == '\r' && recvbuf[5] == '\n')
-					printf("iLen = %d,recvbuf = %s \n",iLen,recvbuf);
-		}
-	}
-#endif
-
-
-	//******************************************************//
-	//******************************************************//
-
-
+/*}}}*/
 
 	return 0;
-}
+}/*}}}*/
