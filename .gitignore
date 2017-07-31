@@ -30,7 +30,7 @@
 # Top-level generic files
 #
 ./stm32_car/USER/output
-
+./stm32_car/USER/DebugConfig
 #
 # Keil projects files
 #
